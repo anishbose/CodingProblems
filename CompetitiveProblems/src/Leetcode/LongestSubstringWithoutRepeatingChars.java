@@ -1,16 +1,9 @@
+package Leetcode;
 import java.util.*;
-
-public class LongestSubstringNonrepeatingChars {
-
-	public static void main(String[] args) {
-
-		Scanner sc = new Scanner(System.in);
-		String s = sc.nextLine();
-		
-		if(s.length() == 0)  {
-			System.out.println("0");
-		}
-		        
+public class LongestSubstringWithoutRepeatingChars {
+	public int lengthOfLongestSubstring(String s) {
+        if(s.length() == 0) return 0;
+        
         HashSet<Character> letters = new HashSet<Character>();
         int left = 0;
         int right = 0;
@@ -20,23 +13,26 @@ public class LongestSubstringNonrepeatingChars {
         while(right < s.length()) {
             while(right < s.length() && !letters.contains(s.charAt(right))) {
                 letters.add(s.charAt(right));
-                same = s.charAt(right);
                 right++;
                 cur++;
             }
             if(cur > max) {
                 max = cur;
             }
-            if(right == s.length() - 1) break;
-            while(left < right && s.charAt(left) != same) {
+            if(right == s.length()) {
+                break;            
+            } else {
+                same = s.charAt(right);
+            }
+            while(s.charAt(left) != same) {
                 letters.remove(s.charAt(left));
                 left++;
                 cur--;
             }
+            letters.remove(same);
             left++;
             cur--;
-            letters.remove(same);
         }
-	}
-
+        return max;
+    }
 }

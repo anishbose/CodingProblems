@@ -1,9 +1,10 @@
+package HackerRank;
+
 
 public class LinkedListCycleDetection {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
 	}
 	
 	
