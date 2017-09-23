@@ -9,22 +9,29 @@ public class TopXInListOfY {
 		}
 		
 		int topX = 1 + (int)(Math.random() * 20);
-		
+		System.out.println(size + " " + topX);
 		int[] topXNums = getTopNums(nums, topX);
+		System.out.println(Arrays.toString(nums));
+		Arrays.sort(nums);
 		System.out.println(Arrays.toString(nums));
 		System.out.println(Arrays.toString(topXNums));
 	}
 	
 	public static int[] getTopNums(int[] nums, int topX) {
 		Comparator<Integer> compare = new TopNumComparator();
-		PriorityQueue<Integer> topNums = new PriorityQueue<Integer>(10, compare);
-		for(int i = 0; i < nums.length; i++) {
+		PriorityQueue<Integer> topNums = new PriorityQueue<Integer>(topX, compare);
+		for(int i = 0; i < topX; i++) {
 			topNums.add(nums[i]);
+		}
+		for(int i = topX; i < nums.length; i++) {
+			if(topNums.peek() < nums[topX]) {
+				topNums.poll();
+				topNums.add(nums[topX]);
+			}
 		}
 		int[] topXNums = new int[topX];
 		for(int i = 0; i < topX; i++) {
 			topXNums[i] = topNums.poll();
-			topNums.remove(topXNums[i]);
 		}
 		return topXNums;
 	}
