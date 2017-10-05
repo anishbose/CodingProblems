@@ -33,7 +33,10 @@ public class TopXInListOfY {
 		for(int i = 0; i < topX; i++) {
 			topXNums[i] = topNums.poll();
 		}
+		
 		return topXNums;
+		
+		
 	}
 
 }
