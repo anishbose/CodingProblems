@@ -14,7 +14,7 @@ public class AdventOfCodeProblem4 {
         
     	public static void main(String[] args) throws NoSuchAlgorithmException
     	{
-			String startCode = "bgvyzdsv";
+			String startCode = "iwrupvqb";
 			
 			boolean foundCode = false;
 			int count = 0;
@@ -35,7 +35,7 @@ public class AdventOfCodeProblem4 {
 					}
 					md5 += (s);
 				}
-				if(md5.substring(0, 6).equals("000000"))
+				if(md5.substring(0, 5).equals("00000"))
 				{
 					foundCode = true;
 					out.println(count);
